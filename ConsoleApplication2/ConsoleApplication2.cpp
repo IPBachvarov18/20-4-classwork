@@ -1,6 +1,3 @@
-// classes-IPBachvarov18.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
 #include<string>
 using namespace std;
@@ -23,6 +20,12 @@ public:
 		y = newY;
 	}
 
+	Point2D(const Point2D& p)
+	{
+		cout << "Copy constructor";
+		x = p.x;
+		x = p.y;
+	}
 	~Point2D()
 	{
 		cout << "Destrcutor" << x << ", " << y << endl;
@@ -33,15 +36,35 @@ public:
 		cout << x << ", " << y << endl;
 	}
 
+	//Predefined operator +
+	Point2D operator+(Point2D& otherPoint)
+	{
+		this->x += otherPoint.x;
+		this->y += otherPoint.y;
+
+		return *this;
+	}
+
 private:
 	float x;
 	float y;
 };
+
+Point2D dump(Point2D p)
+{
+	p.toString();
+	return p;
+}
 int main()
 {
 	Point2D p1;
+	Point2D pp1;
+	Point2D pp2;
+	Point2D pp3;
 	Point2D* p2 = new Point2D();
 	Point2D* p3 = new Point2D(4.6, 5.8);
+	dump(*p3);
+	pp3 = pp1 + pp2;
 
 	p1.toString();
 	p2->toString();
